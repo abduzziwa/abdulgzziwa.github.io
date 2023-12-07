@@ -1,0 +1,1032 @@
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    margin: 0;
+}
+/* this is my uograde to note that i made this project during my learnig of HTML and CSS */
+.my_name{
+    font-size: 1rem;
+}
+/* Typograph and colorpallet */
+::selection{
+    background: var(--color-primary);
+    color: #fff;
+}
+html{
+    /* Always set the the html element to 62.5% */
+    /* this means 1 rem is 10px to uplif from the heading*/
+    font-size: 62.5%; 
+}
+/*Here we have defined our color pallets*/
+/*this colors are i dentified from the design*/
+:root {
+    --color-primary : #2584ff;
+    --color-secondary: #00d9ff;
+    --color-accent : #ff3400;
+    --color-headings: #1b0760;
+    --color-body: #918ca4;
+    --color-body-darker: #5c5577;
+    /* this 2 updates are for recurring/repeatitive values encoutered during building */
+    --color-border: #ccc;
+    --border-radius: 30px;
+
+
+
+}   
+/*I am gonna set all the font family here so that all the elements inherit it.*/
+body{
+    font-family: inter,Arial, Helvetica, sans-serif;
+    color: var(--color-body);
+    font-size:2.4rem;
+    line-height: 1.5;
+
+
+}
+/*Universal Rule for heading colors*/
+h1, h2, h3 {
+    color: var(--color-headings);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+/*Universal Rule for heading fonts(In photoshop px are used as measurements we dont want to use px in our font sizing bcoz they are absolute units*/ 
+h1{
+    /* rem value * size of the html element */
+    /* By default the font size of an Html element is 16px*/
+    /* So we shall have to set our html element size */
+    /* Tip set the tml font size to 62.5% */
+    font-size: 7rem;
+}
+h2{
+    font-size: 4rem;
+}
+h3{
+    font-weight: 500;
+    font-size: 3rem;
+    /* Again here we use a ruler feature in adobeps to measure the distance between our text en the h3///we do the samething with the h1 en h2 */
+    /* But instead of setting the rule here yet the other headings also share the same rule we shall make it universal for headingd
+    Like how we did for the colors  */
+}
+p{
+    /* Because in of the border collapsing since the value is greater
+    chances are that the browser will set its margin
+    which will interfere with the our h3 margin-button feature. There for we will have to set the margin-top to 0 for perfection */
+    margin-top: 0;
+}
+@media screen and (min-width: 1024px) {
+    /* Again this font-sizes are extructed from the design
+    look at the design font-text and then comapare it with
+    you commmon sence to visualise what you are doing */
+    body{
+        font-size: 1.8rem;
+
+    }
+    h1{
+        font-size:8rem;
+    }
+    h2{
+        font-size:4rem;
+    }
+    h3{
+        font-size:2.4rem;
+    }
+}
+/* Links */
+
+a{
+    text-decoration: none;
+}
+/* //NOTE//:  This is our mobile version as always start with a mobile design*/
+.link-arrow{
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.link-arrow::after{
+    content: '-->';
+    margin-left: 5px;
+    transition: margin 0.15s;
+}
+
+.link-arrow:hover::after{
+    margin-left: 10px;
+}
+/* this looks like duplication but the reason to why i did that */
+/* is that i don't want to have one particular place to have all the media query*/
+/* Like as we know media queries are arbituary */
+@media screen and (min-width: 1024px) {
+    .link-arrow{
+        font-size: 1.5rem;
+    }
+}
+
+/* Under the section of badges we gonna use Object Oriented CSS */
+/* So this is gonna be an example of OOC at the same time working on our projects */
+/* .......BADGES.... */
+
+/* badge structure */
+.badge{
+    /* Here we use an fixed value because we don't want it to 
+    change relative to the body-font */
+    border-radius: 20px;
+    font-weight: 600;
+    padding: 0.5rem 2rem;
+    /* we use the nowrap in order to keeep what ever we put inside the badge to stay on a single line  */
+    font-size: 2rem;
+    white-space: nowrap;
+    
+
+}
+/* budge skin */
+
+/* we use to highthens to separate the a block or component
+from the modifier */
+.badge--primary {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.badge--secondary{
+    background: var(--color-secondary);
+    color: #fff;
+}
+
+/* Now lets make rules for the small badges */
+.badge--small{
+    font-size: 1.6rem;
+}
+/* this is a media queri for the big screems desktops and tablets */
+
+@media screen and (min-width:1024px) {
+    .badge{
+        font-size: 1.5rem;
+    }
+
+    .badge--small{
+        font-size: 1.2rem;
+        padding: 0.5rem 1.5rem;
+    }
+}
+
+/* Lists */
+.list{
+    list-style: none;
+    /* to get rid of the padding that is defaultly applied by the browsers */
+    /* i will set the padding left to 0 */
+    padding-left: 0;
+    
+}
+
+/* this list are laid horizontally but here we shall use the OOCSS */
+/* As we stated already we use -- to separate a component from a modifier */
+.list--inline .list__item{
+    /* using inline-block is a good way because we can apply margin */
+    /* but using just inline it will limit us to applying the margin */
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.list--tick{
+    /* to insert the picks */
+    list-style-image: url(/images/tick.svg);
+    /* to view the ticks since the list-items are to close to the margin */
+    padding-left: 3rem;
+    color:var(--color-headings)
+}
+
+
+.list--tick .list__item{
+    padding-left: 0.5rem;  /*this is to add space between the ticks and the list content*/
+    margin-bottom: 1rem; /*this is to add space between list items at the buttom*/
+
+}
+
+/* this is to apply the padding on the desktop screens of list style and content is small */
+@media screen and (min-width: 1024px) {
+    .list--tick .list__item{
+        padding-left: 0;
+    }
+    
+}
+
+/* .....ICONS....... */
+/* Icon on bith desktop and mobile design dont change in size */
+/* therefore no media quries when dealing with icons */
+/* therefore its required to use px to keep their size fixed */
+/* size */
+.icon{
+    width: 40px;
+    height: 40px;
+}
+
+
+/* Why are we using the hythen on this selesctor */
+/* this is not a vaiation or a modifier*/
+/* this is entirely new class */
+/* and in BEM we use a hythen to separate multiple words */
+.icon-container{
+    background: #f3f9fa;
+    width: 64px;
+    height: 64px;
+    border-radius: 100px;
+    /* this property to to make our icon flexible */
+    display: inline-flex;
+    /* this last two properties are to alight the icon in the center horizontally anf vertically repectively */
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    
+}
+
+.icon-small{
+    width: 54px;
+    height: 54px;
+}
+
+.icon--background-accent {
+    background: var(--color-accent);
+}
+
+/* NOTE: if you use span, the width and height properties
+have no effect o span element thus remodify your span element and 
+five it a display of inline-block */
+
+/* the reson we dont use inline-block is that we dont want to lne 
+break if we need to put our span element next to another element */
+
+/* But in icon we may want to use inline-flex because the icon
+may be uncentered in the area we have specifies but using inline-flex
+will  */
+
+
+/*....... color / skin...... */
+
+.icon--white {
+    fill: #fff;
+}
+
+
+
+.icon--primary{
+    fill: var(--color-primary);
+}
+/* summary: this is called OOCSS. structure separated from skin */
+
+/* .......BUTTOM IMPLEMENTATON.... */
+.btn{
+    border-radius: 40px;
+    border:0;
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 2rem 4vw;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    margin: 1rem 0;
+
+}
+
+.btn--primary{
+    background:var(--color-primary);
+    color: #fff;
+}
+/* we have used a color outside of our color pallet beacuase */
+/* we have not studient SAS where you can lighten and darken colors that are in your color pallet */
+.btn--primary:hover{
+    background: #3a8ffd;
+}
+
+.btn--secondary{
+    background: var(--color-secondary);
+    color: #fff;
+}
+/* same apllies to this */
+.btn--secondary:hover{
+    background: #00c8eb;
+}
+
+.btn--accent{
+    background: var(--color-accent);
+    color:#fff
+}
+/* same to this */
+.btn--accent:hover{
+    background: #ec3000;
+}
+
+.btn--outline{
+    background: #fff;
+    color:var(--color-headings);
+    border: 2px solid var(--color-headings);
+}
+
+.btn--outline:hover{
+    background: var(--color-headings);
+    color: #fff;
+}
+/* skin for block buttons */
+.btn--block{
+/* we have to change the display to inline block because by default
+anchor elements are inline  */
+/* And inline elements cant take width and height values */
+    display: inline-block;
+    width: 100%;
+}
+.btn--streched {
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
+.btn .icon{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+       
+}
+/* Desktop version of button */
+@media screen and (max-width: 1024px) {
+    .btn{
+        font-size: 1.5rem;
+    }
+}
+
+/* .....INPUT IMPLEMETATION.... */
+.input {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+    color: var(--color-headings);
+    font-size: 2rem;
+    outline: 0;
+    padding: 1.5rem 3.5rem;
+}
+
+::placeholder{
+    color: #cdcdd7;
+}
+
+/* desktop version of inputs */
+@media screen and (min-width: 1024px){
+    .input{
+        font-size: 1.5rem;
+    }
+}
+
+/* Rule to combine both the search and the input element */
+.input-group{
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    display: flex;
+}
+
+.input-group .input{
+    border: 0;
+    flex-grow: 1;
+    /* inspect the element and get the best option */
+    /* look at the box in the inspect elements */
+    padding: 1.5rem 2rem;
+    width: 0;
+    /* but also 
+    overflow: autp; works */
+}
+
+.input-group .btn{
+    margin: 4px;
+}
+
+.input-group .icon{
+    margin: 4px;
+    margin-top: 1.2rem;
+    margin-left: 1rem;
+}
+
+/* Implementing the card component */
+
+/* card */
+.card{
+    border-radius: 7px;
+    box-shadow: 0 0 20px 10px #f3f3f3;
+    overflow: hidden;
+
+}
+
+.card__header, .card__body{
+    padding: 2rem 3rem;
+}
+
+.card--primary .card__header{
+    background:var(--color-primary) ;
+    color: #fff;
+}
+.card--secondary .card__header{
+    background:var(--color-secondary) ;
+    color: #fff;
+}
+
+/* PLANS (Combining components to make one big component) */
+
+/* plans */
+.plan{
+    transition: transform .2s ease-out;
+}
+.plan__name {
+    color: white;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.4rem;
+
+}
+
+.plan__price{
+    font-size: 6rem;
+    
+}
+
+.plan__billing-cycle{
+    font-size: 2.4rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin-right: 1.9rem;
+}
+
+.card--primary .badge--primary{
+    background: #126de4;
+}
+
+.card--secondary .badge--secondary {
+    background: #02cdf1;
+}
+
+.plan__description{
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    display: block;
+    
+}
+
+.plan .list__item{
+    margin-bottom: 2rem;
+}
+
+.plan--popular {
+    transform: scale(1.1);
+}
+.plan--popular .card__header{
+    position: relative;
+}
+
+.plan--popular .card__header::before{
+    content: url(/images/popular.svg);
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    top: -6px;
+    right: 5%;
+}
+
+.plan:hover{
+    transform: scale(1.05);
+}
+.plan--popular:hover{
+    transform: scale(1.15);
+}
+
+@media screen and (min-width:1024px) {
+    .plan__name{
+        font-size: 1.4rem;
+    }
+
+    .plan__price {
+        font-size: 5rem;
+    }
+
+    .plan__billing-cycle {
+        font-size: 1.6rem;
+    }
+
+    .plan__description {
+        font-size: 1.7rem;
+    }
+}
+
+/* MEDIA */
+
+.media{
+    display: flex;
+}
+
+.media__title{
+    margin-top: 0;
+}
+
+.media__body{
+    margin: 0 2rem;
+}
+
+.media__image{
+    margin-top: 1rem;
+}
+
+/* QUOTES COMPONENT  */
+
+.quote{
+    font-size: 3rem;
+    font-style: italic;
+    color: var(--color-body-darker);
+    line-height: 1.3;
+}
+
+.quote__text::before {
+    content: open-quote;
+}
+
+.quote__text::after{
+    content: close-quote;
+}
+.quote__author{
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-headings);
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.quote__company{
+    font-size: 2rem;
+    opacity: 0.4;
+    font-style: normal;
+    color: var(--color-headings);
+}
+
+.quote__line{
+    position: relative;
+    bottom: 10px;
+}
+
+@media screen and (min) {
+    .quote {
+        font-size: 2rem;
+    }
+
+    .quote__author {
+        font-size: 2.4rem;
+    }
+
+    .quote__company{
+        font-size: 1.6rem;
+    }
+}
+
+/* .......GRIDS....... */
+
+.grid{
+    display: grid;
+}
+
+@media screen and (min-width:768px) {
+    .grid--1x2{
+        grid-template-columns: repeat(2, 1fr) ;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .grid--1x3{
+        grid-template-columns: repeat(3, 1fr) ;
+    }
+}
+
+
+
+/* testimonials */
+
+.testimonial{
+    padding: 3rem;
+    
+}
+
+
+.testimonial__image > img {
+    width: 100%;
+}
+
+.testimonial__image{
+    position: relative;
+}
+
+.testimonial__image > .icon__container {
+    position: absolute;
+    top: 3rem;
+    right: -28px;
+}
+
+@media screen and (min-width:768px) {
+    .testimonial .quote,
+    .testimonial .quote__author{
+        font-size: 2.4rem;
+    }
+
+    .testimonial .quote{
+        margin-left: 6rem;
+    }
+}
+
+/* Call out component */
+
+
+.callout{
+    padding: 4rem;
+    border-radius: 5px;
+}
+
+.callout--primary{
+    background: var(--color-primary);
+    color: #fff;
+
+}
+
+.callout__heading{
+    margin-top: 0;
+    color: #fff;
+    font-size: 3rem;
+}
+
+.callout .btn{
+    justify-self: center;
+    align-self: center;
+}
+
+.callout__content{
+    text-align: center;
+}
+.callout-signup{
+    transform: translateY(6rem);
+}
+@media screen and (min-width:768px) {
+    .callout .grid--1x2 {
+        grid-template-columns: 1fr auto;
+    }
+    .callout__content{
+        text-align: left;
+    }
+    .callout .btn{
+        justify-self: start;
+        margin: 0 2rem;
+    }
+    .callout{
+        max-width: 98rem;
+        margin: auto;
+    }
+}
+
+/* .......Collapsible..... */
+
+.collapsible__header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible__heading{
+    margin-top: 0;
+    font-size: 3rem;
+}
+
+.collapsible__computer{
+    transform: rotate(-90deg);
+    transition: transform 0.3s;
+}
+
+.collapsible__content{
+   max-height: 0;
+   overflow: hidden;
+   opacity: 0;
+   transition: all 0.3s;
+}
+
+.collapsible--expanded .collapsible__computer{
+    transform: rotate(0);
+}
+
+.collapsible--expanded .collapsible__content{
+    max-height: 100vh;
+    opacity: 1;
+
+}
+
+/* .......BLOCKS..... */
+.block{
+    --padding-vertical: 6rem;
+    padding: var(--padding-vertical) 2rem;
+}
+
+.block__heading{
+    margin-top: 0;
+}
+
+.block--dark{
+    background: #000;
+    color:#7b858b;
+}
+
+.block--dark h1,
+.block--dark h2,
+.block--dark h3 {
+    color: #fff;
+}
+
+.block--skewed-right{
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 90%);
+}
+.block--skewed-left{
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
+}
+.block__header{
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* this is a rewusable class not only use in containers. its a max width the content but not the page undestood  */
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* ....NAVIGATION BAR..... */
+
+.nav{
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+    align-items: center;
+    margin: 0;
+    
+
+}
+
+.nav__list{
+    width: 100%;
+    margin: 0;
+}
+
+.nav__item{
+    padding: .5rem 2rem;
+    border-bottom: 1px solid #222;
+}
+
+.nav__item > a {
+    color: #d2d0db;
+    transition: color .3s;
+
+}
+.nav__item > a:hover {
+    color: #fff;
+
+}
+
+.nav__toggler{
+    opacity: 0.5;
+    transition: box-shadow .15s;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.nav.collapsible--expanded .nav__toggler{
+    opacity: 1;
+    box-shadow: 0 0 0 3px #666;
+    border-radius: 5px;
+} 
+
+.nav_brand{
+    transform: translateY(5px);
+}
+
+@media screen and (min-width:768px) {
+    .nav__toggler{
+        display: none;
+    }
+    .nav__list{
+        width: auto;
+        display: flex;
+        font-size: 1.6rem;
+        max-height: 100%;
+        opacity: 1;
+    }
+
+    .nav__item{
+        border: 0;
+    }
+}
+
+/* ......HERO...... */
+
+.hero__tagline{
+    font-size: 2rem;
+    color: #b9c3cf;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+.hero__image{
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .hero {
+        padding-top: 0;
+    }
+    .hero__content{
+        text-align: left;
+        align-self: center;
+    }
+}
+
+/* DOMAIN BLOCK */
+
+.block-domain .input-group{
+    box-shadow: 0 0 30px 20px #e6ebee;
+    border: 0;
+    margin: 4rem auto;
+    max-width: 670px;
+
+}
+
+.block-domain__prices{
+    color: var(--color-headings);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 6rem);
+    font-size: 2rem;
+    font-weight: 600;
+    justify-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+   .block-domain__prices{
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+}
+
+
+/* Domain Plans */
+
+.block-plans .grid {
+    gap: 8rem 4rem;
+}
+
+.block-plans .card {
+    max-width:500px;/* instead of writing a media query here we can set the max width to 500px. The card reamains responsive but it doesnt go more than 500px  */
+    margin: 0 auto;
+}
+
+/* feature  */
+.feature{
+    gap: 4rem 2rem;
+}
+.feature__heading{
+    margin: 1rem 0;
+}
+
+.feature p {
+    margin-bottom: 1.5rem;
+}
+
+.feature__image{
+    width: 100%;
+}
+
+/* this code below changes the position of the image and content alternatively 
+  but i have did it manually that is why i have commented out this code */
+
+/* @media screen and (min-width: 768px) {
+    .feature:nth-of-type(even) .feature__content{
+        order: 2;
+    }
+} */
+
+.feature:first-of-type {
+    margin-top: 6rem;
+}
+
+/* BLOCK_SHOWCASE */
+
+.block-showcase__image > img{
+    width: 100%;
+}
+@media screen and (min-width:768px) {
+    .block-showcase .grid{
+        grid-template-columns: 50% 50%;
+    }
+    .block-showcase__image{
+        justify-self: end;
+    }
+    .block-showcase__image > img{
+        width: auto;
+        max-width: 700px;
+    }
+   
+}
+
+.block-showcase header{
+    margin-bottom: 6rem;
+}
+
+.block-showcase h3{
+    margin-bottom: 2rem;
+}
+
+.block-showcase ul li {
+    margin-bottom: 4.5rem;
+}
+
+/* FOOTER */
+.footer{
+    background:#232323 ;
+    padding-top: 10rem;
+}
+
+.footer__section {
+    padding: 2rem;
+    border-bottom: 1px solid #393939;
+}
+
+.footer__heading{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.footer__brand{
+    margin-top: 5rem;
+    text-align: center;
+}
+
+/* not needed to my pc but for zekerheid */
+.footer__brand img {
+    /* TODO: Consider refactoring this and appying it to all images */
+    width: 100%;
+    max-width: 230px;
+}
+
+.footer__copyright{
+    font-size: 2.1rem;
+    color: #fff;
+    opacity: .3;
+
+}
+
+.footer a {
+    color: #777; 
+    transition: color .3s;
+}
+
+.footer a:hover{
+    color: #fff;
+}
+
+.footer__section .list {
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .footer__sections{
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+    
+    .footer .collapsible__computer{
+        display: none;
+    }
+
+    .footer .collapsible__content {
+        opacity: 1;
+        max-height: 100%;
+    }
+    .footer__brand {
+        order: -1;
+        margin-top: 1rem;
+    }
+
+    .footer__copyright{
+        font-size: 1.5rem;
+    }
+
+    .footer__section{
+        border: 0;
+    }
+
+    .footer__heading {
+        font-size: 1.6rem;
+    }
+
+    .footer ul li {
+        font-size:2.3rem;
+    }
+}
